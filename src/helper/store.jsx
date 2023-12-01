@@ -6,6 +6,8 @@ export const storeCountries = create((set) => ({
 	countries: [],
 	country: null,
 	continent: {},
+	open: false,
+	setOpen: (open) => set((state) => ({ open })),
 	setCountry: (country) => set((state) => ({ country })),
 	setCountries: (countries) => set((state) => ({ countries })),
 	setLoading: (loading) => set((state) => ({ loading })),

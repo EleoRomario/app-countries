@@ -1,6 +1,9 @@
 export const AddFavorite = ({ className, size = "w-6 h-6" }) => {
 	return (
-		<button className={`${className} text-white hover:text-red-500 `}>
+		<button
+			className={`${className} text-white hover:text-red-500 `}
+			onClick={() => console.log("add")}
+		>
 			<svg
 				viewBox="0 0 24 24"
 				xmlns="http://www.w3.org/2000/svg"
