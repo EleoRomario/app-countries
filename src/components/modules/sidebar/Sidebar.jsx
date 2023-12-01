@@ -12,12 +12,12 @@ export const Sidebar = () => {
 		},
 		{
 			name: "My countries",
-			href: "/",
+			href: "/saves",
 			icon: Folder,
 		},
 		{
 			name: "Favorites",
-			href: "/",
+			href: "/favorites",
 			icon: Favorite,
 		},
 	];

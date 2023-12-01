@@ -2,11 +2,17 @@
 import Layout from '../layouts/Layout.astro';
 import {ContainerCountries} from '../components/ui/ContainerCountries.jsx';
 import {DetailCountry} from '../components/ui/DetailCountry.jsx';
+import { Header } from '../components/modules/header/Header';
 ---
 
 <Layout title="Welcome to Astro.">
-	<ContainerCountries client:visible />
-	<div slot="detail" class="overflow-hidden h-full">
+	<div class="[grid-area:header]">
+		<Header client:visible />
+	</div>
+	<div class="[grid-area:content] overflow-y-auto h-full p-10">
+		<ContainerCountries client:visible />
+	</div>
+	<div class="[grid-area:detail] overflow-hidden h-full">
 		<DetailCountry client:visible/>
 	</div>
 </Layout>
