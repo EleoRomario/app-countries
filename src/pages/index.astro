@@ -1,11 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import {ContainerCountries} from '../components/ui/ContainerCountries.jsx';
+import {DetailCountry} from '../components/ui/DetailCountry.jsx';
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
-		<ContainerCountries client:visible />
-	</main>
+	<ContainerCountries client:visible />
+	<div slot="detail" class="overflow-hidden h-full">
+		<DetailCountry client:visible/>
+	</div>
 </Layout>
 

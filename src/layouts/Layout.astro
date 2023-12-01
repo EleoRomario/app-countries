@@ -27,8 +27,13 @@ const { title } = Astro.props;
 			<main class="[grid-area:main] overflow-y-auto bg-bg p-4">
 				<slot />
 			</main>
-			<footer class="[grid-area:footer]:">
-				<p>Footer</p>
+			<div class="[grid-area:detail] overflow-y-auto">
+				<slot name="detail" />
+			</div>
+			<footer class="[grid-area:footer] p-4">
+				<p class="text-center text-sm text-gray-500">
+					© {new Date().getFullYear()} Eleo
+				</p>
 			</footer>
 		</div>
 	</body>
@@ -36,10 +41,30 @@ const { title } = Astro.props;
 <style is:global>
 	#main{
 		display: grid;
-		grid-template-areas: "sidebar header" 
-		"sidebar main"
-		"sidebar footer";
-		grid-template-columns: 300px 1fr;
+		grid-template-areas: "sidebar header header" 
+		"sidebar main detail"
+		"sidebar footer footer";
+		grid-template-columns: 300px 1fr auto;
     grid-template-rows: 80px 1fr auto;
+	}
+
+	::-webkit-scrollbar {
+		width: 7px;
+	}
+
+	/* Track */
+	::-webkit-scrollbar-track {
+		background: #f1f1f1;
+	}
+
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+		background: #d3d3d3;
+		border-radius: 16px;
+	}
+
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+		background: #3361ff;
 	}
 </style>

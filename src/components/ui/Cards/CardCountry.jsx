@@ -1,17 +1,27 @@
 import { useEffect } from "react";
 import { useUnsplash } from "../../../hooks/useUnsplash";
+import { storeCountries } from "../../../helper/store";
 
 export const CardCountry = ({ country }) => {
 	const { code, name, continent } = country;
 
 	const { picture, searchImage } = useUnsplash();
 
+	const { setCountry } = storeCountries();
+
 	useEffect(() => {
 		searchImage(name);
 	}, []);
 
+	const handleClick = () => {
+		setCountry(country);
+	};
+
 	return (
-		<button className="rounded-xl w-52 h-52 p-3 bg-white shadow-md overflow-hidden grid grid-rows-2">
+		<button
+			className="rounded-xl w-52 h-52 p-3 bg-white shadow-md overflow-hidden grid grid-rows-2"
+			onClick={handleClick}
+		>
 			<div className="flex flex-col overflow-hidden gap-2 relative">
 				<picture className="w-full rounded-md overflow-hidden bg-gray-600">
 					<img

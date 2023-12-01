@@ -3,8 +3,18 @@ import { gql } from "@apollo/client";
 export const GET_COUNTRY = gql`
 	query getCountry($name: String!) {
 		countries(filter: { name: { regex: $name } }) {
-			code
 			name
+			code
+			capital
+			currency
+			languages {
+				code
+				name
+			}
+			states {
+				code
+				name
+			}
 			continent {
 				name
 				code
@@ -20,6 +30,16 @@ export const GET_COUNTRY_BY_CONTINENT = gql`
 		) {
 			name
 			code
+			capital
+			currency
+			languages {
+				code
+				name
+			}
+			states {
+				code
+				name
+			}
 			continent {
 				code
 				name
@@ -31,8 +51,18 @@ export const GET_COUNTRY_BY_CONTINENT = gql`
 export const GET_COUNTRIES = gql`
 	query getCountries {
 		countries {
-			code
 			name
+			code
+			capital
+			currency
+			languages {
+				code
+				name
+			}
+			states {
+				code
+				name
+			}
 			continent {
 				name
 				code
