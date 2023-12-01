@@ -86,8 +86,8 @@ export const Header = () => {
 	};
 
 	return (
-		<div className="w-full h-20 flex justify-center items-center border-b relative">
-			<div className="w-1/2 h-10 rounded-xl shadow-sm flex px-3 items-center bg-white">
+		<div className="w-full h-20 flex justify-center items-center relative">
+			<div className="w-1/2 h-10 rounded-xl flex px-3 items-center bg-ligth ">
 				<form onSubmit={handleSubmit} className="flex w-full">
 					<input
 						type="text"

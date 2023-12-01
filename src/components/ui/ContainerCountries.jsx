@@ -8,7 +8,7 @@ export const ContainerCountries = () => {
 	if (error) return <div>Error: {error.message}</div>;
 
 	return (
-		<div className="flex gap-4 flex-wrap">
+		<div className="gap-4 w-full grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] justify-center items-center">
 			{data.map((country) => (
 				<CardCountry key={country.code} country={country} />
 			))}

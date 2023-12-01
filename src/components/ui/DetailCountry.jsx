@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { storeCountries } from "../../helper/store";
 import { useUnsplash } from "../../hooks/useUnsplash";
+import { AddFavorite } from "./buttons/AddFavorite";
 
 export const DetailCountry = () => {
 	const { country } = storeCountries();
@@ -22,13 +23,17 @@ export const DetailCountry = () => {
 		<div
 			className={`${
 				open ? "w-[500px]" : "w-0"
-			} relative flex flex-col h-full overflow-y-auto`}
+			} relative flex flex-col h-full overflow-y-auto bg-white`}
 		>
-			<figure className="w-full h-52 ">
+			<figure className="w-full h-52 relative">
 				<img
 					src={picture?.urls?.regular}
 					alt={picture?.description}
 					className="w-full h-full object-cover"
+				/>
+				<AddFavorite
+					className="absolute bottom-2 left-2"
+					size="w-10 h-10"
 				/>
 			</figure>
 			<div className="relative w-full flex flex-col flex-1 p-4">
@@ -39,7 +44,12 @@ export const DetailCountry = () => {
 						className="w-16 h-16"
 					/>
 					<div>
-						<h1 className="text-title text-2xl font-bold">
+						<h1
+							className="text-2xl font-bold"
+							style={{
+								color: picture?.color,
+							}}
+						>
 							{country?.name}
 						</h1>
 						<span className="italic text-title-200">

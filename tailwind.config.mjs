@@ -4,12 +4,15 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				primary: "#3361ff",
-				ligth: "#fafbfc",
-				bg: "#e6eaf2",
+				primary: "#2a61ff",
+				bg: {
+					DEFAULT: "#ecf4fd",
+					200: "#f2f6ff",
+				},
+				ligth: "#fdfeff",
 				title: {
-					DEFAULT: "#192233",
-					200: "#7d8fb2",
+					DEFAULT: "#152c5b",
+					200: "#93b0c8",
 					500: "#5c7099",
 				},
 			},
