@@ -1,10 +1,9 @@
 ---
 import { Sidebar } from '../components/modules/sidebar/Sidebar';
-import { Header } from '../components/modules/header/Header';
 interface Props {
 	title: string;
 }
-
+const {pathname} = Astro.url;
 const { title } = Astro.props;
 ---
 
@@ -21,7 +20,7 @@ const { title } = Astro.props;
 	<body>
 		<div id="main" class="h-screen bg-bg">
 			<aside class="[grid-area:sidebar] bg-ligth">
-				<Sidebar />
+				<Sidebar client:visible pathname={pathname}/>
 			</aside>
 			<main id="container" class="[grid-area:main] overflow-hidden">
 				<slot />

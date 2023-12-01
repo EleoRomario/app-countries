@@ -3,7 +3,7 @@ import { Logo } from "../../icons/Logo";
 import { Favorite } from "../../icons/Favorite";
 import { Folder } from "../../icons/Folder";
 
-export const Sidebar = () => {
+export const Sidebar = ({ pathname }) => {
 	const nav = [
 		{
 			name: "Home",
@@ -37,7 +37,11 @@ export const Sidebar = () => {
 							<li key={name}>
 								<a
 									href={href}
-									className="ml-2 flex gap-2 h-11 items-center text-title-200 px-10 hover:text-primary font-medium border-r-4 border-transparent rounded-ss-lg rounded-es-xl hover:bg-bg-200 hover:border-primary"
+									className={`ml-2 flex gap-2 h-11 items-center px-10 hover:text-primary font-medium border-r-4 rounded-ss-lg rounded-es-xl hover:bg-bg-200 hover:border-primary ${
+										pathname == href
+											? "text-primary border-primary bg-bg-200"
+											: "border-transparent  text-title-200"
+									}`}
 								>
 									<Icon />
 									{name}
