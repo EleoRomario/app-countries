@@ -6,6 +6,7 @@ export default {
 			colors: {
 				primary: "#3361ff",
 				ligth: "#fafbfc",
+				bg: "#e6eaf2",
 				title: {
 					DEFAULT: "#192233",
 					200: "#7d8fb2",

@@ -3,6 +3,8 @@ import { Africa, America, Asia, Europe, Oceania } from "../../icons/Continents";
 import { Search } from "../../icons/Search";
 import { Trash } from "../../icons/Trash";
 import { CardContinent } from "./CardContinent";
+import { useCountry } from "../../../hooks/useCountry";
+import { storeCountries } from "../../../helper/store";
 
 const continents = [
 	{
@@ -41,8 +43,13 @@ export const Header = () => {
 	};
 
 	const handleShow = () => {
-		console.log("object");
 		setShow(!show);
+	};
+
+	const { searchCountry } = useCountry();
+
+	const handleSearch = () => {
+		searchCountry(country);
 	};
 
 	return (
@@ -56,13 +63,17 @@ export const Header = () => {
 					placeholder="Search for a country..."
 					onChange={handleCountry}
 					onClick={handleShow}
+					autoComplete="off"
 				/>
-				<button className="text-title-200 hover:text-primary flex gap-2">
+				<button
+					className="text-title-200 hover:text-primary flex gap-2"
+					onClick={handleSearch}
+				>
 					<Search />
 				</button>
 			</div>
 			{show && (
-				<div className="flex justify-center w-full absolute top-16">
+				<div className="flex justify-center w-full absolute top-16 z-10">
 					<div
 						className="bg-white shadow-sm w-1/2 rounded-xl p-4 flex flex-col gap-4"
 						onMouseLeave={handleShow}

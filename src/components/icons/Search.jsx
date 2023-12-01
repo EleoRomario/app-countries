@@ -9,9 +9,9 @@ export const Search = () => {
 			<g
 				fill="none"
 				stroke="currentColor"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				stroke-width="2"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				strokeWidth="2"
 			>
 				<circle cx="14" cy="14" r="12" />
 				<path d="m23 23l7 7" />
