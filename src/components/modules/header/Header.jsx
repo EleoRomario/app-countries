@@ -87,7 +87,7 @@ export const Header = () => {
 
 	return (
 		<div className="w-full h-20 flex justify-center items-center relative">
-			<div className="w-1/2 h-10 rounded-xl flex px-3 items-center bg-ligth ">
+			<div className="w-[80%] md:w-1/2 h-10 rounded-xl flex px-3 items-center bg-ligth ">
 				<form onSubmit={handleSubmit} className="flex w-full">
 					<input
 						type="text"
@@ -115,14 +115,15 @@ export const Header = () => {
 			{show && (
 				<div className="flex justify-center w-full absolute top-16 z-10">
 					<div
-						className="bg-white shadow-sm w-1/2 rounded-xl p-4 flex flex-col gap-4"
+						className="bg-white shadow-sm w-[80%] md:w-1/2 rounded-xl p-4 flex flex-col gap-4"
 						onMouseLeave={handleShow}
 					>
 						<header className="flex justify-between items-center">
 							<h1 className="font-semibold">Filter by Region</h1>
 							<button
-								className="text-title-200 hover:text-primary flex gap-2"
+								className="text-primary hover:bg-primary/10 flex gap-2 rounded-lg p-2 justify-center items-center disabled:opacity-50 disabled:hover:bg-white"
 								onClick={handleClear}
+								disabled={!continent?.code}
 							>
 								Clear
 								<Trash />
