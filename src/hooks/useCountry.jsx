@@ -17,19 +17,19 @@ export const useCountry = () => {
 	const { setLoading, setError, setCountries, countries, loading, error } =
 		storeCountries();
 
+	const getCountries = async () => {
+		try {
+			const { data, loading, error } = await client.query({
+				query: GET_COUNTRIES,
+			});
+			setCountries(data?.countries.slice(0, 10));
+			setLoading(loading);
+			setError(error);
+		} catch (error) {
+			setError(error);
+		}
+	};
 	useEffect(() => {
-		const getCountries = async () => {
-			try {
-				const { data, loading, error } = await client.query({
-					query: GET_COUNTRIES,
-				});
-				setCountries(data?.countries.slice(0, 10));
-				setLoading(loading);
-				setError(error);
-			} catch (error) {
-				setError(error);
-			}
-		};
 		getCountries();
 	}, []);
 
@@ -69,6 +69,7 @@ export const useCountry = () => {
 		loading,
 		error,
 		searchCountry,
+		getCountries,
 		searchCountryByContinent,
 	};
 };

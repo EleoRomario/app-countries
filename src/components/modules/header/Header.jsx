@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
 	Africa,
 	SouthAmerica,
@@ -64,7 +64,14 @@ export const Header = () => {
 		setShow(!show);
 	};
 
-	const { searchCountry, searchCountryByContinent } = useCountry();
+	const { getCountries, searchCountry, searchCountryByContinent } =
+		useCountry();
+
+	useEffect(() => {
+		if (!country) {
+			getCountries();
+		}
+	}, [country]);
 
 	const handleSearch = () => {
 		searchCountry(country);
