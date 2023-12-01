@@ -5,10 +5,6 @@ export const CardCountry = ({ country }) => {
 	const { code, name, continent } = country;
 
 	const { picture, searchImage } = useUnsplash();
-	console.log(
-		"🚀 ~ file: CardCountry.jsx:8 ~ CardCountry ~ picture:",
-		picture
-	);
 
 	useEffect(() => {
 		searchImage(name);

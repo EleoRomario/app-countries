@@ -7,6 +7,22 @@ export const GET_COUNTRY = gql`
 			name
 			continent {
 				name
+				code
+			}
+		}
+	}
+`;
+
+export const GET_COUNTRY_BY_CONTINENT = gql`
+	query getCountryByContinent($name: String!, $continent: String!) {
+		countries(
+			filter: { name: { regex: $name }, continent: { eq: $continent } }
+		) {
+			name
+			code
+			continent {
+				code
+				name
 			}
 		}
 	}
@@ -19,6 +35,7 @@ export const GET_COUNTRIES = gql`
 			name
 			continent {
 				name
+				code
 			}
 		}
 	}

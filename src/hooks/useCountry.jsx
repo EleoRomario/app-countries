@@ -1,5 +1,9 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { GET_COUNTRIES, GET_COUNTRY } from "../helper/graphql/queries";
+import {
+	GET_COUNTRIES,
+	GET_COUNTRY,
+	GET_COUNTRY_BY_CONTINENT,
+} from "../helper/graphql/queries";
 import { storeCountries } from "../helper/store";
 import { firstLetterUpper } from "../helper/firstLetterUpper";
 import { useEffect } from "react";
@@ -43,10 +47,28 @@ export const useCountry = () => {
 		}
 	};
 
+	const searchCountryByContinent = async (countryName, continentCode) => {
+		try {
+			const { data, loading, error } = await client.query({
+				query: GET_COUNTRY_BY_CONTINENT,
+				variables: {
+					name: `^${firstLetterUpper(countryName)}`,
+					continent: continentCode,
+				},
+			});
+			setCountries(data?.countries);
+			setLoading(loading);
+			setError(error);
+		} catch (error) {
+			setError(error);
+		}
+	};
+
 	return {
 		data: countries,
 		loading,
 		error,
 		searchCountry,
+		searchCountryByContinent,
 	};
 };

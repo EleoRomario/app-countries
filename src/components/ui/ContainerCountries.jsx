@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useCountry } from "../../hooks/useCountry";
 import { CardCountry } from "./Cards/CardCountry";
 
@@ -13,6 +12,11 @@ export const ContainerCountries = () => {
 			{data.map((country) => (
 				<CardCountry key={country.code} country={country} />
 			))}
+			{data.length === 0 && (
+				<div className="w-full h-96 flex justify-center items-center">
+					<h1 className="text-2xl text-title-200">No results</h1>
+				</div>
+			)}
 		</div>
 	);
 };
