@@ -39,7 +39,9 @@ export const DetailCountry = () => {
 			<div className="relative w-full flex flex-col flex-1 p-4">
 				<div className="flex gap-3">
 					<img
-						src={`https://flagsapi.com/${country?.code}/flat/64.png`}
+						src={`https://flagsapi.com/${
+							country?.code || "PE"
+						}/flat/64.png`}
 						alt=""
 						className="w-16 h-16"
 					/>
