@@ -7,13 +7,13 @@ import { Header } from '../components/modules/header/Header';
 
 <Layout title="App Countries.">
 	<div class="[grid-area:header]">
-		<Header client:visible />
+		<Header client:load />
 	</div>
 	<div class="[grid-area:content] overflow-y-auto h-full p-10">
-		<ContainerCountries client:visible />
+		<ContainerCountries client:load />
 	</div>
 	<div class="[grid-area:detail] overflow-hidden md:relative absolute right-0 h-full">
-		<DetailCountry client:visible/>
+		<DetailCountry client:load/>
 	</div>
 </Layout>
 

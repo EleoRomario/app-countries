@@ -21,7 +21,7 @@ const { title } = Astro.props;
 	<body>
 		<div id="main" class="h-screen bg-bg">
 			<aside class="[grid-area:sidebar] md:relative absolute h-screen z-50">
-				<Sidebar client:visible pathname={pathname}/>
+				<Sidebar client:load pathname={pathname}/>
 			</aside>
 			<main id="container" class="[grid-area:main] overflow-hidden">
 				<slot />
