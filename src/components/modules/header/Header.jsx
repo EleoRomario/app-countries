@@ -68,7 +68,7 @@ export const Header = () => {
 		useCountry();
 
 	useEffect(() => {
-		if (!country) {
+		if (country === "") {
 			getCountries();
 		}
 	}, [country]);

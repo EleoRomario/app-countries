@@ -1,4 +1,3 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
 import {
 	GET_COUNTRIES,
 	GET_COUNTRY,
@@ -8,23 +7,27 @@ import { storeCountries } from "../helper/store";
 import { firstLetterUpper } from "../helper/firstLetterUpper";
 import { useEffect } from "react";
 
-const client = new ApolloClient({
-	uri: import.meta.env.PUBLIC_API_COUNTRY,
-	cache: new InMemoryCache(),
-});
-
 export const useCountry = () => {
 	const { setLoading, setError, setCountries, countries, loading, error } =
 		storeCountries();
 
 	const getCountries = async () => {
 		try {
-			const { data, loading, error } = await client.query({
-				query: GET_COUNTRIES,
+			const response = await fetch(import.meta.env.PUBLIC_API_COUNTRY, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					query: GET_COUNTRIES,
+				}),
 			});
+
+			const json = await response.json();
+
+			const { data } = json;
+
 			setCountries(data?.countries.slice(0, 10));
-			setLoading(loading);
-			setError(error);
 		} catch (error) {
 			setError(error);
 		}
@@ -35,13 +38,22 @@ export const useCountry = () => {
 
 	const searchCountry = async (countryName) => {
 		try {
-			const { data, loading, error } = await client.query({
-				query: GET_COUNTRY,
-				variables: { name: `^${firstLetterUpper(countryName)}` },
+			const response = await fetch(import.meta.env.PUBLIC_API_COUNTRY, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					query: GET_COUNTRY,
+					variables: { name: `^${firstLetterUpper(countryName)}` },
+				}),
 			});
+
+			const json = await response.json();
+
+			const { data } = json;
+
 			setCountries(data?.countries.slice(0, 10));
-			setLoading(loading);
-			setError(error);
 		} catch (error) {
 			setError(error);
 		}
@@ -49,16 +61,25 @@ export const useCountry = () => {
 
 	const searchCountryByContinent = async (countryName, continentCode) => {
 		try {
-			const { data, loading, error } = await client.query({
-				query: GET_COUNTRY_BY_CONTINENT,
-				variables: {
-					name: `^${firstLetterUpper(countryName)}`,
-					continent: continentCode,
+			const response = await fetch(import.meta.env.PUBLIC_API_COUNTRY, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
 				},
+				body: JSON.stringify({
+					query: GET_COUNTRY_BY_CONTINENT,
+					variables: {
+						name: `^${firstLetterUpper(countryName)}`,
+						continent: continentCode,
+					},
+				}),
 			});
+
+			const json = await response.json();
+
+			const { data } = json;
+
 			setCountries(data?.countries);
-			setLoading(loading);
-			setError(error);
 		} catch (error) {
 			setError(error);
 		}
